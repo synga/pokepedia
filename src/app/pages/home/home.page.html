@@ -28,7 +28,7 @@
         </div>
       </ng-container>
     </mat-tab>
-    <mat-tab label="Quem é esse pokémon?"> </mat-tab>
+    <mat-tab label="Quem é esse pokémon?" *ngIf="_pokedex.connection$ | async"></mat-tab>
   </mat-tab-group>
 </section>
 

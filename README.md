@@ -27,4 +27,5 @@ De inicio a ideia era ser TDD, porém com o pouco conhecimento de testes que pos
 
 - Testes, tanto unitários com o Jasmine quanto Cypress para e2e.
 - Melhorar o jogo: Tornar possível escolher a temporada que quer jogar.
-- Melhorar o uso do IndexedDB: Alguns endpoints não buscam no IndexedDB se o Pokémon está salvo, passar a verificar lá antes de devolver um observável com a chamada HTTP. 
+- Melhorar o uso do IndexedDB: Alguns endpoints não buscam no IndexedDB se o Pokémon está salvo, passar a verificar lá antes de devolver um observável com a chamada HTTP.
+- Tratar os subscribes e remove-los quando destruir um componente ou navegar.

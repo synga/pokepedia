@@ -1,10 +1,10 @@
 import { ComponentsService } from 'src/app/services/components.service';
 import { Observable } from 'rxjs';
 import { PokedexService } from 'src/app/services/pokedex.service';
-import { Pokemon } from 'src/app/models/pokemon.model';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -31,13 +31,24 @@ export class GamePage implements OnInit {
   constructor(
     public _location: Location,
     public _components: ComponentsService,
-    private _pokedex: PokedexService
+    private _pokedex: PokedexService,
+    private router: Router
   ) { }
 
   /**
    * Ao entrar na página já busca o primeiro pokémon
    */
   ngOnInit(): void {
+    /**
+     * Assina o status da navegação e se em algum momento for false, então redireciona para a home
+     * e dou um alert de que só pode jogar se estiver conectado
+     */
+    this._pokedex.connection$.subscribe(conn => {
+      if (conn === false) {
+        this.router.navigate(['/'], { replaceUrl: true });
+        this._components.showAlertWithMessage('Só é possivel jogar se você estiver online');
+      }
+    });
     this.pokemon$ = this._components.showLoaderUntilCompleted(this.getPokemon());
   }
 

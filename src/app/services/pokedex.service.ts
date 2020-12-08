@@ -26,13 +26,33 @@ export class PokedexService {
   public length$: Observable<number> = this.lengthSubject.asObservable();
 
   /**
+   * Subject para lidar com o status de conexão. Não vou criar um serviço por enquanto só
+   * pra isso
+   */
+  private connectionSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(navigator.onLine);
+  /**
+   * Observable a ser assinado para pegar o estado da conexão
+   */
+  public connection$: Observable<boolean> = this.connectionSubject.asObservable();
+
+  /**
    * Construtor da classe com serviços injetados
    */
   constructor(
     private http: HttpClient,
     private _pokemonStore: PokemonsStore,
     private _components: ComponentsService
-  ) { }
+  ) {
+    /**
+     * Listeners para mostrar o jogo dependenco da conexão
+     */
+    window.addEventListener('offline', () => {
+      this.connectionSubject.next(false);
+    });
+    window.addEventListener('online', () => {
+      this.connectionSubject.next(true);
+    });
+  }
 
   /**
    * Busca uma lista de pokemons para páginação

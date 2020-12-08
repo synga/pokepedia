@@ -1,5 +1,4 @@
 import { Pokemon } from '../../models/pokemon.model';
-import { map } from 'rxjs/operators';
 import { TypesService } from './../../services/types.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -65,12 +64,14 @@ export class HomePage implements OnInit {
    * Construtor com os serviços injetados
    */
   constructor(
-    private _pokedex: PokedexService,
+    public _pokedex: PokedexService,
     private _pokemonsStore: PokemonsStore,
     private _types: TypesService,
     private _router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+
+  }
 
   /**
    * Ao iniciar a home vai buscar os dados dos pokémons.
