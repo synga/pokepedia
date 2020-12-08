@@ -1,0 +1,6 @@
+<div class="backdrop center-content" *ngIf="_components.alert$ | async as message">
+  <div class="alert">
+    <p>{{message}}</p>
+    <button class="mat-raised-button mat-primary" (click)="_components.hideAlert()">Ok</button>
+  </div>
+</div>

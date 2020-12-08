@@ -1,0 +1,113 @@
+/* Imports de váriaveis de CSS */
+@import './assets/css/variables.scss';
+
+/* CSS adicionado pelo Angular Material */
+html,
+body {
+  height: 100%;
+  background-color: var(--primary-bg);
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* CSS especifico de classes */
+header.page-title {
+  background-color: #f04037;
+  display: flex;
+  height: clamp(20vh, 30%, 45vh);
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  margin-bottom: 10%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    border-left: 0px solid transparent;
+    border-right: 98vw solid transparent;
+    border-top: 40vh solid #f04037;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 5rem);
+    color: white;
+    text-transform: capitalize;
+    position: relative;
+    z-index: 100;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #333333b6;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+button.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.question-mark {
+  height: 200px;
+  width: auto;
+  cursor: pointer;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Utilitários */
+.responsive-grid {
+  display: grid;
+  grid-template: 1fr / repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animações de css */
+@keyframes show {
+  from {
+    transform: scale(0.3);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  30% {
+    transform: rotate3d(1, 2, 2, 15deg) scale(1.1);
+  }
+  60% {
+    transform: rotate3d(1, 2, 2, -15deg) scale(.9);
+  }
+  100% {
+    transform: rotate3d(0, 0, 0, 0deg) scale(1);
+  }
+}
+
+@keyframes reveal {
+  from {
+    filter: brightness(0);
+  }
+  to {
+    filter: brightness(1);
+  }
+}

@@ -1,0 +1,7 @@
+.git
+.editorconfig
+/node_modules
+/e2e
+/documentation
+*.zip
+*.md

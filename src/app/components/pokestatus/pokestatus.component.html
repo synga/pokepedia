@@ -1,0 +1,12 @@
+<div class="pokestatus">
+  <p class="pokestatus--name">{{ statusNames.get(status.stat.name).name }}</p>
+  <div class="pokestatus--container">
+    <div
+      class="pokestatus--value"
+      [ngStyle]="{
+        width: status.base_stat + 'px',
+        background: statusNames.get(status.stat.name).color
+      }"
+    ></div>
+  </div>
+</div>

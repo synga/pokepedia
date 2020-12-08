@@ -1,0 +1,54 @@
+.page-title {
+  h1 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin: 0;
+  }
+}
+
+section.game {
+  background-color: white;
+  margin: 15px;
+  border-radius: var(--border-radius);
+  position: relative;
+  bottom: 15px;
+  min-height: 400px;
+
+  article {
+    flex-direction: column;
+    padding: 15px;
+
+    .game--image {
+      width: 300px;
+      max-width: 300px;
+      height: auto;
+      filter: brightness(0);
+
+      &.reveal {
+        animation: reveal 2s ease-out forwards;
+      }
+    }
+
+    .game--answer {
+      flex-direction: column;
+      h3 {
+        text-align: center;
+      }
+    }
+
+    .game--input {
+      flex-direction: column;
+
+      input {
+        padding: 8px;
+        font-size: 1.2rem;
+      }
+
+      button {
+        margin-top: 15px;
+      }
+    }
+  }
+}

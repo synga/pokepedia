@@ -1,0 +1,8 @@
+fazer:
+
+- pipes para calculo de tamanho e peso
+- pagina do jogo
+- escrever readme (especificar que foi teste?)
+- começar testes, pelo menos o que souber
+- qualquer refatoração de código que der pra usar
+- subir no github e vercel

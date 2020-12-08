@@ -1,0 +1,23 @@
+<article
+  class="pokecard"
+  [ngStyle]="{ background: generateCardBackground(pokemon.types) }"
+>
+  <p class="pokecard--pokemon">
+    {{ pokemon.name }} <small>#{{ number }}</small>
+  </p>
+  <div class="pokecard--images">
+    <img
+      class="pokecard--images--pokeball"
+      src="../../../assets/images/pokeball_1.png"
+      alt="pokeball"
+    />
+    <img
+      class="pokecard--images--sprite"
+      [src]="pokemon.sprites['official'] || pokemon.sprites['front']"
+      [alt]="pokemon.name"
+    />
+  </div>
+
+  <p class="pokecard--height">Altura: <span>{{pokemon.height * 10}}cm</span></p>
+  <p class="pokecard--weight">Peso: <span>{{(pokemon.weight * 100) / 1000}}kg</span></p>
+</article>

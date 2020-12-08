@@ -1,0 +1,16 @@
+.search {
+  display: grid;
+  grid-template: 1fr/1fr 100px;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .search--field {
+    width: 100%;
+    input {
+      color: white;
+    }
+  }
+}

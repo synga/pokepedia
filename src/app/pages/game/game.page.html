@@ -1,0 +1,68 @@
+<!-- cabeçalho do site -->
+<header class="page-title">
+  <!-- Botão para voltar -->
+  <button
+    mat-fab
+    color="basic"
+    class="back-button"
+    aria-label="voltar"
+    (click)="_location.back()"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h1>Quem é esse Pokémon?</h1>
+</header>
+
+<section class="game">
+  <article *ngIf="pokemon$ | async as pokemon" class="center-content">
+    <img
+      [src]="pokemon.sprites.other['official-artwork'].front_default"
+      class="game--image"
+      [ngClass]="{'reveal': answerCondition !== null}"
+    />
+    <div [ngSwitch]="answerCondition">
+      <div class="game--answer center-content" *ngSwitchCase="true">
+        <h3>
+          Você acertou 🎉😁 A resposta {{answer.value}} esta correta.<br />Quer
+          tentar novamente? Clique abaixo.
+        </h3>
+        <img
+          class="question-mark"
+          (click)="tryAgain()"
+          src="../../../assets/images/question_mark.png"
+          alt="Tente novamente"
+        />
+      </div>
+      <div class="game--answer center-content" *ngSwitchCase="false">
+        <h3>
+          Você errour 😥😩 A resposta corre é {{pokemon.name.split('-')[0]}}.<br />Quer
+          tentar novamente? Clique abaixo.
+        </h3>
+        <img
+          class="question-mark"
+          (click)="tryAgain()"
+          src="../../../assets/images/question_mark.png"
+          alt="Tente novamente"
+        />
+      </div>
+      <div class="game--input center-content" *ngSwitchDefault>
+        <input
+          type="text"
+          name="termo_busca"
+          [formControl]="answer"
+          (keyup.enter)="tryToGuess(pokemon.name)"
+          placeholder="Quem é esse pokémon?"
+        />
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          class="game--button"
+          (click)="tryToGuess(pokemon.name)"
+        >
+          Resposta
+        </button>
+      </div>
+    </div>
+  </article>
+</section>

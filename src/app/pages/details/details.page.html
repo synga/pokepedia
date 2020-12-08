@@ -1,0 +1,47 @@
+<!-- Botão para voltar -->
+<button
+  mat-fab
+  color="basic"
+  class="back-button"
+  aria-label="voltar"
+  (click)="_location.back()"
+>
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<!-- cabeçalho do site -->
+<header class="page-title">
+  <h1>
+    {{pokemon?.name}}
+    <small>#{{number}}</small>
+  </h1>
+</header>
+
+<!-- Seção com os dados do pokémon -->
+<section *ngIf="pokemon" class="pokemon">
+  <!-- Imagem do pokémon -->
+  <img [src]="pokemon.sprites.official" [alt]="pokemon.name" />
+  <!-- Os tipos desse pokémon -->
+  <div class="pokemon--types">
+    <app-type-badge
+      *ngFor="let type of pokemon.types"
+      [id]="type"
+    ></app-type-badge>
+  </div>
+  <hr />
+
+  <!-- Os status base do pokémon -->
+  <article class="pokemon--stats">
+    <legend>Status base do Pokémon</legend>
+    <app-pokestatus
+      *ngFor="let status of pokemon.stats"
+      [status]="status"
+    ></app-pokestatus>
+  </article>
+  <hr />
+
+  <!-- Mais informações como Altura e Peso -->
+  <article class="pokemon--info">
+    <p>Altura: <span>{{pokemon.height * 10}}cm</span></p>
+    <p>Peso: <span>{{(pokemon.weight * 100) / 1000}}kg</span></p>
+  </article>
+</section>

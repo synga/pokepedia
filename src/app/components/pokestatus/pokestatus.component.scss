@@ -1,0 +1,28 @@
+.pokestatus {
+  display: grid;
+  grid-template: 1fr/ minmax(80px, 150px) 200px;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: center;
+
+  .pokestatus--name {
+    font-size: clamp(.8rem, 4vw, 1.5rem);
+    color: white;
+    margin: 0;
+  }
+
+  .pokestatus--container {
+    max-width: 200px;
+    width: 200px;
+    height: 30px;
+    background-color: white;
+    border-radius: 15px;
+
+    .pokestatus--value {
+      height: 100%;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+  }
+}
