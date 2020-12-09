@@ -14,6 +14,71 @@
 </header>
 
 <section class="game">
+  <article class="game--generations">
+    <h2>
+      Escolha as gerações que deseja jogar?<br />
+      (Nome dos iniciais para referência)
+    </h2>
+    <form [formGroup]="generationsForm" class="center-content">
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="first"
+      >
+        Primeira (Bulbasaur, Charmander, Squirtle)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="second"
+      >
+        Segunda (Chikorita, Cyndaquil, totodile)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="third"
+      >
+        Terceira (Treecko, Torchic, Mudkip)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="fourth"
+      >
+        Quarta (Turtwig, Chimchar, Piplup)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="fifth"
+      >
+        Quinta (Snivy, Tepig, Oshawott)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="sixth"
+      >
+        Sexta (Chespin, Fennekin, Froakie)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="seventh"
+      >
+        Sétima (Rowlet, Litten, Popplio)
+      </mat-checkbox>
+      <mat-checkbox
+        color="primary"
+        (change)="tryAgain()"
+        formControlName="eighth"
+      >
+        Oitava (Grookey, Scorbunny, Sobble)
+      </mat-checkbox>
+    </form>
+  </article>
+
   <article *ngIf="pokemon$ | async as pokemon" class="center-content">
     <img
       [src]="pokemon.sprites.other['official-artwork'].front_default"
@@ -35,8 +100,9 @@
       </div>
       <div class="game--answer center-content" *ngSwitchCase="false">
         <h3>
-          Você errour 😥😩 A resposta corre é {{pokemon.name.split('-')[0]}}.<br />Quer
-          tentar novamente? Clique abaixo.
+          Você errour 😥😩 A resposta correta é
+          {{pokemon.name.split('-')[0]}}.<br />Quer tentar novamente? Clique
+          abaixo.
         </h3>
         <img
           class="question-mark"

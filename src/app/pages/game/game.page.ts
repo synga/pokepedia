@@ -3,15 +3,48 @@ import { Observable } from 'rxjs';
 import { PokedexService } from 'src/app/services/pokedex.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+/**
+ * Página para o jogo de Who's that pokémon. Algo bem basico, pega todas as gerações e
+ *
+ */
 @Component({
   selector: 'app-game',
   templateUrl: './game.page.html',
   styleUrls: ['./game.page.scss']
 })
 export class GamePage implements OnInit {
+
+  /**
+   * Range das gerações com numero onde começa e termina
+   */
+  public generationsRange: Map<string, { min: number, max: number }> = new Map([
+    ['first', { min: 1, max: 151 }],
+    ['second', { min: 152, max: 251 }],
+    ['third', { min: 252, max: 386 }],
+    ['fourth', { min: 387, max: 493 }],
+    ['fifth', { min: 494, max: 649 }],
+    ['sixth', { min: 650, max: 721 }],
+    ['seventh', { min: 722, max: 809 }],
+    ['eighth', { min: 810, max: 898 }]
+  ]);
+
+  /**
+   * Form para o usuário marcar as gerações que ele quer visualizar os pokémons no jogo
+   */
+  public generationsForm: FormGroup = new FormGroup({
+    first: new FormControl(true),
+    second: new FormControl(false),
+    third: new FormControl(false),
+    fourth: new FormControl(false),
+    fifth: new FormControl(false),
+    sixth: new FormControl(false),
+    seventh: new FormControl(false),
+    eighth: new FormControl(false)
+  })
+
   /**
    * Observável contendo os dados do pokémon para o jogo. Vem de uma busca na API, então
    * deixei como any
@@ -56,8 +89,19 @@ export class GamePage implements OnInit {
    * Gera um ID randomico e busca o pokémon com aquele ID para o jogo
    */
   getPokemon(): Observable<any> {
-    // Pega um ID entre 1 e 898. Por enquanto está hardcoded o numero maximo, depois arrumo
-    const randomID = Math.floor(Math.random() * 898) + 1;
+    /**
+     * Pega apenas as gerações marcadas
+     */
+    const generations = Object.entries(this.generationsForm.value).filter(g => g[1]);
+    // vai gerar os possiveis ids nas gerações selecionadas
+    const possiblePokemons = generations.map(g => {
+      // pega o minimo e o maximo de cada geração marcada
+      const { min, max } = this.generationsRange.get(g[0]);
+      // retorna um id randomico entre o minimo e o maximo
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    })
+    // Pega randomicamente um dos pokémons do array de gerações selecionadas
+    const randomID = possiblePokemons[Math.floor(Math.random() * possiblePokemons.length)];
     return this._pokedex.getPokemonByID(randomID);
   }
 

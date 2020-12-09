@@ -10,6 +10,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatPaginatorModule, MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PokestatusComponent } from './pokestatus/pokestatus.component';
+import { MatCheckboxModule, MatCheckbox } from '@angular/material/checkbox';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
 
 /**
@@ -53,6 +54,7 @@ const translatePaginator = () => {
     MatButtonModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     MatIconModule,
     FormsModule
   ],
@@ -65,6 +67,7 @@ const translatePaginator = () => {
     MatButton,
     MatPaginator,
     TypeBadgeComponent,
+    MatCheckbox,
     SearchComponent,
     PokecardComponent,
     PokestatusComponent,

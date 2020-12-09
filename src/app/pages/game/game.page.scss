@@ -16,6 +16,24 @@ section.game {
   bottom: 15px;
   min-height: 400px;
 
+  .game--generations {
+    background-color: var(--primary-bg);
+    color: white;
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      flex-direction: column;
+      max-width: 350px;
+      margin: auto;
+      align-items: flex-start;
+    }
+  }
+
   article {
     flex-direction: column;
     padding: 15px;
