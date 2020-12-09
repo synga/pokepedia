@@ -4,6 +4,10 @@ Projeto feito para uma entrevista de emprego. Foram alterados alguns aspectos e 
 
 A ideia era uma simples página para consultar pokémons em forma de páginação, uma busca por nome e uma página de detalhes.
 
+## Live Preview
+
+Foi feito deploy via Vercel e o app pode ser visitado no link: https://pokepedia-swart.vercel.app/
+
 ## A Aplicação.
 
 A aplicação consiste de uma pokedex onde é possivel consultar alguns dados de pokémons. Na página inicial é possivel ver os pokémons por ordem utilizando um páginador, pesquisar um pokémon por nome (que envia diretamente para a página de detalhes) ou pesquisar por tipo de pokémon, trazendo todos os pokémons que fazem parte daquele tipo (por tipo entenda fogo, lutador, voador, etc).
